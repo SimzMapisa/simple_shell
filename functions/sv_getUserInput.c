@@ -8,9 +8,10 @@
  * Return: Nothing
  */
 
-void getUserInput(char *input, size_t size)
+void getUserInput(char *input, size_t size, char *argv[])
 {
 	int read, len;
+	extern char **environ;
 
 	while (1)
 	{
@@ -32,14 +33,17 @@ void getUserInput(char *input, size_t size)
 			if (len > 0 && input[len - 1] == '\n')
 				input[len - 1] = '\0';
 
-			/*TODO: handle Input */
-			printf("%s\n", input);
-		}
-		else
-		{
-			exit(1);
+			/*TODO: handle Input */ 
+			if (strcmp("/bin/ls", input) == 0)
+			{
+				perror("error");
+			}
+				
+			if (execve(input, argv, environ) != -1)
+			{
+				perror("execve error:");
+			}
 		}
 	}
 	free(input);
 }
-
