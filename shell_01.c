@@ -8,8 +8,10 @@
 int main(int argc, char *argv[])
 {
 	char input[1024];
-
 	(void)argc;
-	getUserInput(argv[0], sizeof(input));
+	/*char *argv[] = {"/bin/ls", "-1", NULL};*/
+
+	getUserInput(input, sizeof(input), argv);
+
 	return (0);
 }
