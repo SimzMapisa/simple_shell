@@ -11,6 +11,6 @@
 
 int _putchar(char c);
 int displayPrompt(void);
-void getUserInput(char *input, size_t size);
+void getUserInput(char *input, size_t size, char *argv[]);
 
 #endif
