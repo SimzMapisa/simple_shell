@@ -1,7 +1,6 @@
 #ifndef SHELL_H
 #define SHELL_H
 
-#include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -12,5 +11,8 @@ extern char **environ;
 int _putchar(char c);
 int displayPrompt(void);
 void handleUserInput(char *argv[]);
+int _strcmp(const char *str1, const char *str2);
+int _strlen(const char *str);
+char *_strcat(char *dest, const char *src);
 
 #endif
