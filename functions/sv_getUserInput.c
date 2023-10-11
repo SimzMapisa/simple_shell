@@ -1,49 +1,64 @@
 #include "sv_shell.h"
 
 /**
- * getUserInput - gets user input from stdin
- * @input: pointer to an array of strings
- * @size: size of the array
+ * executeCommand - executes the command if found
+ * @command: pointer to the command to be executed
+ * @argv: an array of args
  *
  * Return: Nothing
  */
 
-void getUserInput(char *input, size_t size, char *argv[])
+void executeCommand(char *command, char *argv[])
 {
-	int read, len;
-	extern char **environ;
+	pid_t pid = fork();
+	int status;
+
+	if (pid == -1)
+	{
+		perror("Fork Error");
+		_exit(1);
+	}
+	else if (pid == 0)
+	{
+		if (execve(command, argv, environ) == -1)
+		{
+			perror(command);
+			_exit(1);
+		}
+	}
+	else
+		wait(&status);
+}
+
+/**
+ * handleUserInput - handle the input from the user
+ * @argv: a list of arguments from user
+ *
+ * Return: Nothing
+ */
+
+void handleUserInput(char *argv[])
+{
+	char *input = NULL;
+	size_t size = 0;
+	size_t len;
 
 	while (1)
 	{
 		displayPrompt();
-
-		/* Flush the output buffer to ensure the prompt is displayed */
 		fflush(stdout);
 
-		input = NULL;
-		size = 0;
-
-		read = getline(&input, &size, stdin);
-
-		if (read != -1)
-		{
-			/* Remove the newline character if present */
-			len = strlen(input);
-
-			if (len > 0 && input[len - 1] == '\n')
-				input[len - 1] = '\0';
-
-			/*TODO: handle Input */ 
-			if (strcmp("/bin/ls", input) == 0)
-			{
-				perror("error");
-			}
-				
-			if (execve(input, argv, environ) != -1)
-			{
-				perror("execve error:");
-			}
-		}
+		if (getline(&input, &size, stdin) == -1 || *input == EOF)
+			_exit(1);
+		len = strlen(input);
+		if (len > 0 && input[len - 1] == '\n')
+			input[len - 1] = '\0';
+		if (strcmp("/bin/ls", input) == 0)
+			executeCommand("/bin/ls", argv);
+		if (strcmp(input, "") != 0 && strcmp("/bin/ls", input) != 0)
+			write(2, "No such file or directory\n", 26);
+		else
+			continue;
 	}
 	free(input);
 }
