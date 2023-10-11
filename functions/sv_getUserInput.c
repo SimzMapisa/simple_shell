@@ -53,12 +53,12 @@ void handleUserInput(char *argv[])
 			free(input);
 			_exit(1);
 		}
-		len = strlen(input);
+		len = _strlen(input);
 		if (len > 0 && input[len - 1] == '\n')
 			input[len - 1] = '\0';
-		if (strcmp("/bin/ls", input) == 0)
+		if (_strcmp("/bin/ls", input) == 0)
 			executeCommand("/bin/ls", argv);
-		if (strcmp(input, "") != 0 && strcmp("/bin/ls", input) != 0)
+		if (_strcmp(input, "") != 0 && _strcmp("/bin/ls", input) != 0)
 			write(2, "No such file or directory\n", 26);
 		else
 			continue;
