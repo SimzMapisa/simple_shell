@@ -49,7 +49,10 @@ void handleUserInput(char *argv[])
 		fflush(stdout);
 
 		if (getline(&input, &size, stdin) == -1 || *input == EOF)
+		{
+			free(input);
 			_exit(1);
+		}
 		len = strlen(input);
 		if (len > 0 && input[len - 1] == '\n')
 			input[len - 1] = '\0';
