@@ -2,16 +2,15 @@
 
 /**
  * main - entry point
+ * @argv: array of arguments
+ * @argc: length of the array
+ *
  * Return: 0 success
  */
 
 int main(int argc, char *argv[])
 {
-	char input[1024];
 	(void)argc;
-	/*char *argv[] = {"/bin/ls", "-1", NULL};*/
-
-	getUserInput(input, sizeof(input), argv);
-
+	handleUserInput(argv);
 	return (0);
 }
