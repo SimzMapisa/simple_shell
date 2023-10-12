@@ -14,5 +14,6 @@ void handleUserInput(char *argv[]);
 int _strcmp(const char *str1, const char *str2);
 int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
+int checktabsornewline(char *str);
 
 #endif
