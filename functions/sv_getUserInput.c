@@ -37,12 +37,11 @@ void executeCommand(char *command, char *argv[])
  * Return: Nothing
  */
 
-void handleUserInput(char *argv[])
+int handleUserInput(char *argv[])
 {
-	char *token, *input = NULL;
-	size_t len, size = 0;
-	size_t len;
-	const char delim[] = "\n";
+	char *input = NULL, *token;
+	size_t size = 0, len;
+	const char delim[] = " \n";
 
 	while (1)
 	{
@@ -74,7 +73,7 @@ void handleUserInput(char *argv[])
 					executeCommand(token, argv);
 					token = strtok(NULL, delim);
 				}
-				if (token && _strcmp("/bin/ls", input) != 0)
+				if (token && _strcmp("/bin/ls", token) != 0)
 					write(2, "No such file or directory\n", 26);
 			}
 		}
