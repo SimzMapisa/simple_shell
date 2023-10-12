@@ -16,14 +16,14 @@ void executeCommand(char *command, char *argv[])
 	if (pid == -1)
 	{
 		perror("Fork Error");
-		_exit(1);
+		_exit(0);
 	}
 	else if (pid == 0)
 	{
 		if (execve(command, argv, environ) == -1)
 		{
 			perror(command);
-			_exit(1);
+			_exit(0);
 		}
 	}
 	else
@@ -39,29 +39,45 @@ void executeCommand(char *command, char *argv[])
 
 void handleUserInput(char *argv[])
 {
-	char *input = NULL;
-	size_t size = 0;
+	char *token, *input = NULL;
+	size_t len, size = 0;
 	size_t len;
+	const char delim[] = "\n";
 
 	while (1)
 	{
-		displayPrompt();
+		if (isatty(STDIN_FILENO))
+			displayPrompt();
 		fflush(stdout);
 
 		if (getline(&input, &size, stdin) == -1 || *input == EOF)
 		{
 			free(input);
-			_exit(1);
+			_exit(0);
 		}
 		len = _strlen(input);
-		if (len > 0 && input[len - 1] == '\n')
-			input[len - 1] = '\0';
-		if (_strcmp("/bin/ls", input) == 0)
-			executeCommand("/bin/ls", argv);
-		if (_strcmp(input, "") != 0 && _strcmp("/bin/ls", input) != 0)
-			write(2, "No such file or directory\n", 26);
+
+		if (checktabsornewline(input) == 1)
+		{
+			return (0);
+		}
 		else
-			continue;
+		{
+			if (len > 0 && input[len - 1] == '\n')
+				input[len - 1] = '\0';
+			token = strtok(input, delim);
+
+			if (len > 0)
+			{
+				if (_strcmp("/bin/ls", token) == 0)
+				{
+					executeCommand(token, argv);
+					token = strtok(NULL, delim);
+				}
+				if (token && _strcmp("/bin/ls", input) != 0)
+					write(2, "No such file or directory\n", 26);
+			}
+		}
 	}
 	free(input);
 }
