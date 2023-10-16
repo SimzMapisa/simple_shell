@@ -16,5 +16,8 @@ int _strcmp(const char *str1, const char *str2);
 int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
 int checktabsornewline(char *str);
+char *_getenv( const char *name);
+int _strcmp(const char *str1, const char *str2);
+int _status(char *cmd);
 
 #endif
