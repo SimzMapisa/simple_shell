@@ -3,3 +3,4 @@ a.out
 shell
 TEST_SUITE/
 runchecker.bash
+allowed_functions
