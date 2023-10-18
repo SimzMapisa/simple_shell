@@ -56,7 +56,7 @@ int handleUserInput(char *argv[])
 		}
 		len = _strlen(input);
 
-		if (checktabsornewline(input) == 1)
+		if (checkTabsOrNewline(input) == 1)
 		{
 			return (0);
 		}
