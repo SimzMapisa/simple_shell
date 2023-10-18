@@ -14,7 +14,7 @@ char *_strcpy(char *dest, const char *src)
 	len = _strlen(src);
 
 	if (_strlen(dest) != len)
-		return NULL;
+		return (NULL);
 
 	for (i = 0; src[i] != '\0'; i++)
 	{

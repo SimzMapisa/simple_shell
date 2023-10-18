@@ -15,5 +15,5 @@ int checktabsornewline(char *str)
 		if (str[i] != '\t' && str[i] != '\n' && str[i] != ' ')
 			return (0);
 	}
-	return 1;
+	return (1);
 }

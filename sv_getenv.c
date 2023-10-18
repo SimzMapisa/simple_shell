@@ -10,17 +10,13 @@
 
 char *_getenv( const char *name)
 {
-       char *temp, myPath[PATHSIZE] = "";
+	char *temp, myPath[PATHSIZE] = "";
 
-       temp = _getenv(name);
+	temp = _getenv(name);
 
-       if (temp == NULL)
-       {
-	       printf("no PATH variable set.\n");
-       }
-
-       
-       return (temp);
-	       
-
+	if (temp == NULL)
+	{
+		printf("no PATH variable set.\n");
+	}
+	return (temp);
 }
