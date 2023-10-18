@@ -69,7 +69,7 @@ void printEnv(char **env)
 
 char *getCommand(char *command)
 {
-	char *path = getEnv("PATH");
+	char *path = _getEnv("PATH");
 	char *token;
 	char *cmd_full;
 	struct stat st;
@@ -93,12 +93,12 @@ char *getCommand(char *command)
 }
 
 /**
- * getEnv - searches for enviroment string pointed to by name
+ * _getEnv - searches for enviroment string pointed to by name
  * @env_var: input string
  * Return: value of the requested environment variable
  */
 
-char *getEnv(const char *env_var)
+char *_getEnv(const char *env_var)
 {
 	int i = 0;
 	char *key;
