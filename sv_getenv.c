@@ -8,7 +8,7 @@
  * Return: value of the requested environ variable
  */
 
-char *_getenv( const char *name)
+char *_getenv(const char *name)
 {
 	char *temp, myPath[PATHSIZE] = "";
 
