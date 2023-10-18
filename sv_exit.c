@@ -39,6 +39,10 @@ int handleExitWithArgs(char **args)
 
 int handleExit(char **args)
 {
+	if (args == NULL)
+	{
+		return (127);
+	}
 	if (_strcmp(args[0], "exit") == 0 && args[1] == NULL)
 		exit(0);
 	return (0);
