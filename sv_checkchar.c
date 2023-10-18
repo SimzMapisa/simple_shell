@@ -96,7 +96,7 @@ char *getCommand(char *command)
  * getEnv - searches for enviroment string pointed to by name
  * @env_var: input string
  * Return: value of the requested environment variable
- *
+ */
 
 char *getEnv(const char *env_var)
 {
@@ -114,4 +114,4 @@ char *getEnv(const char *env_var)
 		i++;
 	}
 	return (NULL);
-}*/
+}
