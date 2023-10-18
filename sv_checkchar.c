@@ -65,7 +65,7 @@ void printEnv(char **env)
  * getCommand - gets user input commands
  * @command: user input
  * Return: 0
- *
+ */
 
 char *getCommand(char *command)
 {
@@ -92,7 +92,7 @@ char *getCommand(char *command)
 	return (NULL);
 }
 
-**
+/**
  * getEnv - searches for enviroment string pointed to by name
  * @env_var: input string
  * Return: value of the requested environment variable
