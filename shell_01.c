@@ -1,4 +1,4 @@
-#include "./functions/sv_shell.h"
+#include "sv_shell.h"
 
 /**
  * main - entry point
