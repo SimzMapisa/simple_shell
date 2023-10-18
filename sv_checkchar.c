@@ -48,7 +48,7 @@ char **splitString(char *buff, char *delim)
  * printEnv - prints the environment
  * @env: environment path
  * Return: void
- *
+ */
 
 void printEnv(char **env)
 {
