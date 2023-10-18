@@ -7,6 +7,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 extern char **environ;
 int _putchar(char c);
@@ -15,9 +16,10 @@ int handleUserInput(char *argv[]);
 int _strcmp(const char *str1, const char *str2);
 int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
-int checktabsornewline(char *str);
-char *_getenv( const char *name);
-int _strcmp(const char *str1, const char *str2);
-int _status(char *cmd);
+int checkTabsOrNewline(char *str);
+char *getEnv(const char *env_var);
+char *getCommand(char *command);
+char **splitString(char *buff, char *delim);
+void printEnv(char **env);
 
 #endif
