@@ -1,12 +1,12 @@
 #include "sv_shell.h"
 
-/*
+/**
  * execCmd - executes the program
  * @token: tokenised user input
  * @args: array of argumt strings
  * @env: environment variables
  *
- * Return: Nothing
+ * Return: void
  */
 
 void execCmd(char *token, char **args, char **env)
