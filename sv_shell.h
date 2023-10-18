@@ -17,9 +17,11 @@ int _strcmp(const char *str1, const char *str2);
 int _strlen(const char *str);
 char *_strcat(char *dest, const char *src);
 int checkTabsOrNewline(char *str);
-char *getEnv(const char *env_var);
+char *_getEnv(const char *env_var);
 char *getCommand(char *command);
 char **splitString(char *buff, char *delim);
 void printEnv(char **env);
-
+int handleExitWithArgs(char **args);
+void execCmd(char *token, char **args, char **env);
+int handleExit(char **args);
 #endif
