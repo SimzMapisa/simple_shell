@@ -9,17 +9,17 @@
 
 int handleExitWithArgs(char **toks)
 {
-	int exit_Status;
+	int exitStatus;
 	char err[300] = "./hsh: 1: exit: Illegal number: ";
 
 	if (toks[1] != NULL)
 	{
-		exit_status = atoi(toks[1]);
-		if (exit_status > 0)
-			exit(exit_status);
-		else if (exit_status == 0 && strcmp(toks[1], "0") == 0)
+		exitStatus = atoi(toks[1]);
+		if (exitStatus > 0)
+			exit(exitStatus);
+		else if (exitStatus == 0 && strcmp(toks[1], "0") == 0)
 			exit(0);
-		else if (exit_status < 0 || (exit_status == 0 && strcmp(toks[1], "0") != 0))
+		else if (exitStatus < 0 || (exitStatus == 0 && strcmp(toks[1], "0") != 0))
 		{
 			strcat(err, toks[1]);
 			strcat(err, "\n");
