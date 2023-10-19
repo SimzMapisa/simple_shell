@@ -9,26 +9,22 @@
 
 int handleExitWithArgs(char **args)
 {
-	int exitStatus;
-	char e[256] = ": cannot access '/test_hbtn': No such file or directory";
+	int exit_Status;
+	char err[300] = "./hsh: 1: exit: Illegal number: ";
 
-	if (args[1] != NULL)
+	if (toks[1] != NULL)
 	{
-		exitStatus = atoi(args[1]);
-		if (exitStatus > 0)
-			exit(exitStatus);
-		if (exitStatus == 0 && _strcmp(args[1], "0") == 0)
+		exit_status = atoi(toks[1]);
+		if (exit_status > 0)
+			exit(exit_status);
+		else if (exit_status == 0 && strcmp(toks[1], "0") == 0)
 			exit(0);
-		if (exitStatus == 0 && strcmp(args[1], "0") != 0)
+		else if (exit_status < 0 || (exit_status == 0 && strcmp(toks[1], "0") != 0))
 		{
-			strcat(e, args[1]);
-			strcat(e, "\n");
-			write(2, e, _strlen(e));
+			strcat(err, toks[1]);
+			strcat(err, "\n");
+			write(2, err, strlen(err));
 			exit(2);
-		}
-		else
-		{
-			exit(exitStatus);
 		}
 	}
 	return (0);
