@@ -10,7 +10,7 @@
 int handleExitWithArgs(char **args)
 {
 	int exitStatus;
-	char err[256] = "/bin/ls: cannot access '/test_hbtn': No such file or directory";
+	char e[256] = ": cannot access '/test_hbtn': No such file or directory";
 
 	if (args[1] != NULL)
 	{
@@ -21,8 +21,9 @@ int handleExitWithArgs(char **args)
 			exit(0);
 		if (exitStatus == 0 && strcmp(args[1], "0") != 0)
 		{
-			_strcat(err, "\n");
-			write(2, err, _strlen(err));
+			strcat(e, args[1]);
+			strcat(e, "\n");
+			write(2, e, _strlen(e));
 			exit(2);
 		}
 		else
