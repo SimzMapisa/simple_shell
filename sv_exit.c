@@ -7,7 +7,7 @@
  * Return: 0 on success
  */
 
-int handleExitWithArgs(char **args)
+int handleExitWithArgs(char **toks)
 {
 	int exit_Status;
 	char err[300] = "./hsh: 1: exit: Illegal number: ";
