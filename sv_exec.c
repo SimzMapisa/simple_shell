@@ -21,7 +21,7 @@ void execCmd(char *token, char **args, char **env)
 		if ((strcmp(token, "/bin/ls") == 0) || (strcmp(token, "/bin/echo") == 0))
 		{
 			execve(token, args, env);
-			token = strtok(NULL, " ");
+			token = _strtok(NULL, " ");
 		}
 		cmd = getCommand(args[0]);
 		if (cmd)

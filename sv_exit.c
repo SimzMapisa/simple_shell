@@ -7,23 +7,23 @@
  * Return: 0 on success
  */
 
-int handleExitWithArgs(char **toks)
+int handleExitWithArgs(char **args)
 {
 	int exitStatus;
-	char err[300] = "./hsh: 1: exit: Illegal number: ";
+	char *error = "./hsh: 1: exit: Illegal number: ";
 
-	if (toks[1] != NULL)
+	if (args[1] != NULL)
 	{
-		exitStatus = atoi(toks[1]);
+		exitStatus = atoi(args[1]);
 		if (exitStatus > 0)
 			exit(exitStatus);
-		else if (exitStatus == 0 && strcmp(toks[1], "0") == 0)
+		else if (exitStatus == 0 && strcmp(args[1], "0") == 0)
 			exit(0);
-		else if (exitStatus < 0 || (exitStatus == 0 && strcmp(toks[1], "0") != 0))
+		else if (exitStatus < 0 || (exitStatus == 0 && strcmp(args[1], "0") != 0))
 		{
-			strcat(err, toks[1]);
-			strcat(err, "\n");
-			write(2, err, strlen(err));
+			strcat(error, args[1]);
+			strcat(error, "\n");
+			write(2, error, strlen(error));
 			exit(2);
 		}
 	}

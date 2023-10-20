@@ -32,7 +32,7 @@ char **splitString(char *buff, char *delim)
 	int i = 0;
 
 	tokens = malloc(sizeof(char *) * 1024);
-	token = strtok(buff, delim);
+	token = _strtok(buff, delim);
 
 	while (token)
 	{
@@ -74,7 +74,7 @@ char *getCommand(char *command)
 	char *cmd_full;
 	struct stat st;
 
-	token = strtok(path, ":");
+	token = _strtok(path, ":");
 	while (token)
 	{
 		cmd_full = malloc(strlen(token) + strlen(command) + 1);
@@ -105,7 +105,7 @@ char *_getEnv(const char *env_var)
 
 	while (environ[i])
 	{
-		key = strtok(environ[i], "=");
+		key = _strtok(environ[i], "=");
 		if (strcmp(env_var, key) == 0)
 		{
 			key = strtok(NULL, "\n");

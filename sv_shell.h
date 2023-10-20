@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 extern char **environ;
+char *_strtok(char *str, const char *delim);
 int _putchar(char c);
 int displayPrompt(void);
 int handleUserInput(char *argv[]);

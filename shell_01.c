@@ -37,9 +37,8 @@ int main(int ac, char **av, char **env)
 		args = splitString(input, " \n");
 		if (_strcmp(args[0], "env") == 0)
 			printEnv(env);
-		handleExit(args);
-		handleExitWithArgs(args);
-		token = strtok(input_cpy, " ");
+		/* handleExitWithArgs(args);*/
+		token = _strtok(input_cpy, " ");
 		execCmd(token, args, env);
 		free(args);
 	}
